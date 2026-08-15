@@ -1,6 +1,5 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
 
 const SITE_TITLE = 'Divine Kingdom of Dio Re Al';
 const SITE_DESCRIPTION =
@@ -85,6 +84,7 @@ const posts = [
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
 		<link
 			href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
 			rel="stylesheet"
@@ -97,18 +97,28 @@ const posts = [
 
 		<!-- MOBILE HEADER -->
 		<header class="mobile-header">
-			<div class="mobile-symbol">☉</div>
+			<div class="mobile-symbol">
+				<img
+					src="/dio-re-al-white-sun-of-dio-re-al-x-design.webp"
+					alt="Dio Re Al White Sun"
+				/>
+			</div>
+
 			<div>
 				<div class="mobile-title">DIO RE AL</div>
 				<div class="mobile-subtitle">DIVINE KINGDOM</div>
 			</div>
 		</header>
 
+
 		<!-- SIDEBAR -->
 		<aside class="sidebar">
 
 			<div class="solar-symbol">
-				☉
+				<img
+					src="/dio-re-al-white-sun-of-dio-re-al-x-design.webp"
+					alt="Dio Re Al White Sun"
+				/>
 			</div>
 
 			<div class="kingdom-title">
@@ -199,7 +209,10 @@ const posts = [
 			</div>
 
 			<div class="sidebar-bottom">
-				☉
+				<img
+					src="/dio-re-al-white-sun-of-dio-re-al-x-design.webp"
+					alt=""
+				/>
 			</div>
 
 		</aside>
@@ -208,6 +221,8 @@ const posts = [
 		<!-- MAIN CONTENT -->
 		<main class="content" id="home">
 
+
+			<!-- HERO -->
 			<section class="hero">
 
 				<div class="hero-small">
@@ -432,7 +447,7 @@ const posts = [
 			</section>
 
 
-			<!-- LINKS -->
+			<!-- IMPORTANT LINKS -->
 			<section class="links-section" id="links">
 
 				<div class="section-number">V</div>
@@ -555,7 +570,10 @@ const posts = [
 			<section class="final-declaration">
 
 				<div class="final-symbol">
-					☉
+					<img
+						src="/dio-re-al-white-sun-of-dio-re-al-x-design.webp"
+						alt="Dio Re Al White Sun"
+					/>
 				</div>
 
 				<h2>
@@ -569,8 +587,65 @@ const posts = [
 			</section>
 
 
-			<!-- FOOTER -->
-			<Footer />
+			<!-- COPYRIGHT -->
+			<footer class="kingdom-footer">
+
+				<div class="footer-symbol">
+					<img
+						src="/dio-re-al-white-sun-of-dio-re-al-x-design.webp"
+						alt="Dio Re Al"
+					/>
+				</div>
+
+				<div class="footer-title">
+					DIVINE KINGDOM OF DIO RE AL
+				</div>
+
+				<div class="footer-links">
+
+					<a
+						href="https://allmylinks.com/divinoreinodedioreal"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						All My Links
+					</a>
+
+					<a
+						href="https://www.twitch.tv/diosreyal"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Twitch
+					</a>
+
+					<a
+						href="https://www.artstation.com/diosreyal"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						ArtStation
+					</a>
+
+					<a
+						href="https://www.poeticous.com/alczolivier"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Poeticous
+					</a>
+
+					<a href="mailto:divinekingdomofal@proton.me">
+						Contact
+					</a>
+
+				</div>
+
+				<div class="copyright">
+					© The Divine Kingdom of Dio Re Al • All Rights Reserved.
+				</div>
+
+			</footer>
 
 		</main>
 
@@ -634,10 +709,18 @@ const posts = [
 }
 
 .solar-symbol {
-	font-size: 50px;
-	color: #c00000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin-bottom: 20px;
-	text-shadow: 0 0 30px rgba(190, 0, 0, .4);
+}
+
+.solar-symbol img {
+	width: 120px;
+	height: 120px;
+	object-fit: contain;
+	display: block;
+	filter: drop-shadow(0 0 18px rgba(180, 0, 0, 0.45));
 }
 
 .kingdom-title {
@@ -727,8 +810,15 @@ const posts = [
 	bottom: 20px;
 	left: 0;
 	width: 100%;
-	color: #420000;
-	font-size: 18px;
+	display: flex;
+	justify-content: center;
+}
+
+.sidebar-bottom img {
+	width: 28px;
+	height: 28px;
+	object-fit: contain;
+	opacity: .45;
 }
 
 
@@ -1120,9 +1210,14 @@ h2 {
 }
 
 .final-symbol {
-	font-size: 60px;
-	color: #8b0000;
 	margin-bottom: 30px;
+}
+
+.final-symbol img {
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
+	filter: drop-shadow(0 0 25px rgba(180, 0, 0, .45));
 }
 
 .final-declaration h2 {
@@ -1134,6 +1229,59 @@ h2 {
 	font-size: 9px;
 	letter-spacing: 6px;
 	color: #650000;
+}
+
+
+/* FOOTER */
+
+.kingdom-footer {
+	padding: 70px 30px 45px;
+	text-align: center;
+	border-top: 1px solid #3a0808;
+	background: #020202;
+}
+
+.footer-symbol img {
+	width: 55px;
+	height: 55px;
+	object-fit: contain;
+	opacity: .7;
+	filter: drop-shadow(0 0 15px rgba(180, 0, 0, .35));
+}
+
+.footer-title {
+	margin-top: 20px;
+	font-family: 'Cinzel', serif;
+	font-size: 14px;
+	letter-spacing: 4px;
+	color: #ddd;
+}
+
+.footer-links {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 25px;
+	margin: 30px auto;
+	max-width: 700px;
+}
+
+.footer-links a {
+	color: #666;
+	font-size: 9px;
+	letter-spacing: 2px;
+	transition: .3s;
+}
+
+.footer-links a:hover {
+	color: #c00000;
+}
+
+.copyright {
+	margin-top: 35px;
+	color: #555;
+	font-size: 9px;
+	letter-spacing: 1.5px;
 }
 
 
@@ -1161,8 +1309,14 @@ h2 {
 	}
 
 	.mobile-symbol {
-		color: #b00000;
-		font-size: 28px;
+		display: flex;
+		align-items: center;
+	}
+
+	.mobile-symbol img {
+		width: 40px;
+		height: 40px;
+		object-fit: contain;
 	}
 
 	.mobile-title {
@@ -1206,6 +1360,10 @@ h2 {
 
 	.principle-box {
 		flex-direction: column;
+	}
+
+	.footer-links {
+		gap: 15px;
 	}
 
 }
