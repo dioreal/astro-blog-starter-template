@@ -1,2013 +1,827 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+const title = "The Divine Kingdom of Dio Re Al";
+const description =
+	"The Divine Kingdom of Dio Re Al — Alipseism / Diorealism, the religion, philosophy and lifestyle of Dio Re Al.";
 ---
 
 <!doctype html>
 <html lang="en">
-<head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
 
-	<!-- =========================================
-	     FAVICON
-	     ========================================= -->
+		<!-- FAVICON -->
+		<link
+			rel="icon"
+			type="image/webp"
+			href="/dio-re-al-white-sun-of-dio-re-al-x-design.webp"
+		/>
+		<link
+			rel="shortcut icon"
+			type="image/webp"
+			href="/dio-re-al-white-sun-of-dio-re-al-x-design.webp"
+		/>
 
-	<link
-		rel="icon"
-		type="image/png"
-		sizes="512x512"
-		href="/favicon.png"
-	/>
+		<meta name="theme-color" content="#000000" />
 
-	<link
-		rel="apple-touch-icon"
-		href="/favicon.png"
-	/>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 
-	<meta name="theme-color" content="#030303" />
-	<meta name="color-scheme" content="dark" />
-
-	<style>
-
-		/* =========================================================
-		   DIVINE KINGDOM OF DIO RE AL
-		   ORIGINAL VISUAL SYSTEM
-		   ========================================================= */
-
-		:root {
-			--void: #020202;
-			--black: #050505;
-			--black-red: #0b0000;
-
-			--blood-dark: #380000;
-			--blood: #720000;
-			--blood-light: #b30000;
-			--blood-hot: #e00000;
-
-			--white: #f4f2ed;
-			--ivory: #dedbd3;
-			--silver: #a7a7a7;
-			--gray: #686868;
-
-			--line: rgba(255,255,255,.13);
-
-			--serif: Georgia, "Times New Roman", serif;
-			--sans: Arial, Helvetica, sans-serif;
-		}
-
-
-		/* =========================================================
-		   RESET
-		   ========================================================= */
-
-		* {
-			box-sizing: border-box;
-		}
-
-		html {
-			scroll-behavior: smooth;
-			background: var(--void);
-		}
-
-		body {
-			margin: 0;
-			padding: 0;
-
-			color: var(--white);
-
-			background:
-				radial-gradient(
-					ellipse at 50% 15%,
-					rgba(100,0,0,.16),
-					transparent 38%
-				),
-				radial-gradient(
-					ellipse at 15% 70%,
-					rgba(100,0,0,.08),
-					transparent 35%
-				),
-				linear-gradient(
-					180deg,
-					#020202 0%,
-					#080000 40%,
-					#020202 100%
-				);
-
-			font-family: var(--serif);
-
-			overflow-x: hidden;
-		}
-
-		body::before {
-			content: "";
-
-			position: fixed;
-			inset: 0;
-
-			pointer-events: none;
-			z-index: 50;
-
-			background:
-				linear-gradient(
-					rgba(255,255,255,.012) 1px,
-					transparent 1px
-				);
-
-			background-size: 100% 4px;
-
-			opacity: .12;
-		}
-
-		a {
-			color: inherit;
-			text-decoration: none;
-		}
-
-		img {
-			max-width: 100%;
-		}
-
-
-		/* =========================================================
-		   BACKGROUND ATMOSPHERE
-		   ========================================================= */
-
-		.void {
-
-			position: fixed;
-
-			inset: 0;
-
-			z-index: 0;
-
-			pointer-events: none;
-
-			overflow: hidden;
-		}
-
-
-		/* rotating transparent Sun */
-
-		.sun {
-
-			position: absolute;
-
-			width: min(90vw, 1000px);
-			height: min(90vw, 1000px);
-
-			left: 50%;
-			top: 48%;
-
-			transform: translate(-50%, -50%);
-
-			opacity: .075;
-
-			filter:
-				drop-shadow(
-					0 0 25px
-					rgba(255,255,255,.35)
-				)
-				drop-shadow(
-					0 0 100px
-					rgba(170,0,0,.5)
-				);
-
-			animation:
-				sunDrift 20s ease-in-out infinite;
-		}
-
-		.sun img {
-
-			width: 100%;
-			height: 100%;
-
-			object-fit: contain;
-
-			animation:
-				sunRotation 110s linear infinite;
-		}
-
-
-		@keyframes sunRotation {
-
-			from {
-				transform: rotate(0deg);
+			:root {
+				--black: #000000;
+				--deep-black: #030303;
+				--blood: #8b0000;
+				--bright-blood: #c40000;
+				--dark-blood: #350000;
+				--white: #f5f5f5;
+				--grey: #a7a7a7;
+				--dark-grey: #242424;
 			}
 
-			to {
-				transform: rotate(360deg);
-			}
-		}
-
-
-		@keyframes sunDrift {
-
-			0%,100% {
-				transform:
-					translate(-50%,-50%)
-					scale(1);
+			* {
+				box-sizing: border-box;
 			}
 
-			50% {
-				transform:
-					translate(-50%,-51%)
-					scale(1.035);
+			html {
+				scroll-behavior: smooth;
 			}
-		}
 
+			body {
+				margin: 0;
+				background: #000;
+				color: var(--white);
+				font-family: Inter, sans-serif;
+				overflow-x: hidden;
+			}
 
-		/* =========================================================
-		   RED AURA
-		   ========================================================= */
+			/* =========================================================
+			   MOVING WHITE SUN
+			   ========================================================= */
 
-		.aura {
+			.cosmic-background {
+				position: fixed;
+				inset: 0;
+				z-index: -10;
+				overflow: hidden;
+				background: #000;
+			}
 
-			position: absolute;
+			.sun {
+				position: absolute;
 
-			width: 700px;
-			height: 700px;
+				width: min(72vw, 900px);
+				height: min(72vw, 900px);
 
-			left: 50%;
-			top: 45%;
+				left: 50%;
+				top: 50%;
 
-			transform: translate(-50%,-50%);
+				transform: translate(-50%, -50%);
 
-			border-radius: 50%;
+				background-image: url('/dio-re-al-white-sun-of-dio-re-al-x-design.webp');
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;
 
-			background:
-				radial-gradient(
+				filter:
+					brightness(1.1)
+					contrast(1.05)
+					drop-shadow(0 0 25px rgba(255,255,255,0.18))
+					drop-shadow(0 0 90px rgba(255,255,255,0.08));
+
+				opacity: 0.18;
+
+				animation:
+					sunDrift 28s ease-in-out infinite alternate,
+					sunRotate 100s linear infinite;
+
+				pointer-events: none;
+			}
+
+			@keyframes sunDrift {
+				0% {
+					transform: translate(-57%, -48%) scale(0.92);
+				}
+				50% {
+					transform: translate(-43%, -53%) scale(1.05);
+				}
+				100% {
+					transform: translate(-52%, -44%) scale(0.96);
+				}
+			}
+
+			@keyframes sunRotate {
+				from {
+					filter:
+						brightness(1.1)
+						contrast(1.05)
+						drop-shadow(0 0 25px rgba(255,255,255,0.18));
+				}
+				to {
+					filter:
+						brightness(1.15)
+						contrast(1.05)
+						drop-shadow(0 0 55px rgba(255,255,255,0.12));
+				}
+			}
+
+			.cosmic-background::after {
+				content: "";
+				position: absolute;
+				inset: 0;
+
+				background:
+					radial-gradient(
+						circle at center,
+						transparent 0%,
+						rgba(0,0,0,0.12) 35%,
+						rgba(0,0,0,0.75) 75%,
+						#000 100%
+					);
+
+				pointer-events: none;
+			}
+
+			/* =========================================================
+			   BLOOD ATMOSPHERE
+			   ========================================================= */
+
+			.blood-glow {
+				position: fixed;
+				width: 45vw;
+				height: 45vw;
+				max-width: 650px;
+				max-height: 650px;
+
+				left: 50%;
+				top: 50%;
+
+				transform: translate(-50%, -50%);
+
+				background: radial-gradient(
 					circle,
-					rgba(120,0,0,.18),
-					transparent 68%
+					rgba(130,0,0,0.12) 0%,
+					rgba(80,0,0,0.06) 35%,
+					transparent 70%
 				);
 
-			filter: blur(30px);
-
-			animation: auraPulse 9s ease-in-out infinite;
-		}
-
-		@keyframes auraPulse {
-
-			0%,100% {
-				opacity: .4;
-				transform:
-					translate(-50%,-50%)
-					scale(1);
+				filter: blur(40px);
+				z-index: -9;
+				pointer-events: none;
 			}
 
-			50% {
-				opacity: .8;
-				transform:
-					translate(-50%,-50%)
-					scale(1.15);
-			}
-		}
+			/* =========================================================
+			   NAVIGATION
+			   ========================================================= */
 
+			nav {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
 
-		/* =========================================================
-		   STAR / PARTICLE FIELD
-		   ========================================================= */
+				height: 74px;
 
-		.stars {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
 
-			position: absolute;
-			inset: 0;
+				background: rgba(0,0,0,0.78);
+				backdrop-filter: blur(14px);
 
-			background-image:
-				radial-gradient(
-					1px 1px at 20% 30%,
-					rgba(255,255,255,.6),
-					transparent
-				),
-				radial-gradient(
-					1px 1px at 70% 20%,
-					rgba(255,255,255,.45),
-					transparent
-				),
-				radial-gradient(
-					1px 1px at 40% 75%,
-					rgba(255,255,255,.5),
-					transparent
-				),
-				radial-gradient(
-					1px 1px at 85% 65%,
-					rgba(255,255,255,.4),
-					transparent
-				);
+				border-bottom: 1px solid rgba(255,255,255,0.08);
 
-			background-size:
-				320px 320px,
-				450px 450px,
-				520px 520px,
-				380px 380px;
-
-			opacity: .35;
-		}
-
-
-		/* =========================================================
-		   MAIN
-		   ========================================================= */
-
-		.site {
-
-			position: relative;
-
-			z-index: 2;
-		}
-
-
-		/* =========================================================
-		   NAVIGATION
-		   ========================================================= */
-
-		.navigation {
-
-			position: fixed;
-
-			top: 0;
-			left: 0;
-			right: 0;
-
-			z-index: 100;
-
-			display: flex;
-
-			justify-content: center;
-			align-items: center;
-
-			gap: 28px;
-
-			padding: 18px 25px;
-
-			background:
-				rgba(2,2,2,.78);
-
-			border-bottom:
-				1px solid
-				rgba(255,255,255,.1);
-
-			backdrop-filter: blur(15px);
-		}
-
-		.navigation a {
-
-			font-family: var(--sans);
-
-			font-size: 10px;
-
-			letter-spacing: 3px;
-
-			text-transform: uppercase;
-
-			color: var(--silver);
-
-			transition: .35s;
-
-			padding: 9px 15px;
-
-			border-radius: 999px;
-		}
-
-		.navigation a:hover {
-
-			color: white;
-
-			background:
-				rgba(120,0,0,.35);
-
-			box-shadow:
-				0 0 20px
-				rgba(160,0,0,.25);
-		}
-
-
-		/* =========================================================
-		   HERO
-		   ========================================================= */
-
-		.hero {
-
-			min-height: 100vh;
-
-			display: flex;
-
-			align-items: center;
-			justify-content: center;
-
-			text-align: center;
-
-			padding:
-				130px 25px
-				100px;
-
-			position: relative;
-		}
-
-
-		.hero-inner {
-
-			max-width: 1200px;
-
-			position: relative;
-
-			z-index: 3;
-		}
-
-
-		/* little solar symbol */
-
-		.hero-symbol {
-
-			width: 110px;
-			height: 110px;
-
-			object-fit: contain;
-
-			margin-bottom: 35px;
-
-			filter:
-				drop-shadow(
-					0 0 15px
-					rgba(255,255,255,.6)
-				)
-				drop-shadow(
-					0 0 35px
-					rgba(180,0,0,.6)
-				);
-
-			animation:
-				symbolPulse 6s ease-in-out infinite;
-		}
-
-
-		@keyframes symbolPulse {
-
-			0%,100% {
-				transform: scale(1);
+				z-index: 100;
 			}
 
-			50% {
-				transform: scale(1.07);
+			nav a {
+				color: #ddd;
+				text-decoration: none;
+
+				padding: 11px 17px;
+
+				border: 1px solid transparent;
+				border-radius: 999px;
+
+				font-size: 12px;
+				letter-spacing: 1.5px;
+				text-transform: uppercase;
+
+				transition: all 0.3s ease;
 			}
-		}
 
+			nav a:hover {
+				color: white;
+				border-color: rgba(180,0,0,0.7);
+				background: rgba(100,0,0,0.18);
+				box-shadow: 0 0 20px rgba(130,0,0,0.18);
+			}
 
-		/* =========================================================
-		   HERO TYPOGRAPHY
-		   ========================================================= */
+			/* =========================================================
+			   HERO
+			   ========================================================= */
 
-		.eyebrow {
+			.hero {
+				min-height: 100vh;
 
-			font-family: var(--sans);
+				display: flex;
+				align-items: center;
+				justify-content: center;
 
-			font-size: 10px;
+				text-align: center;
 
-			letter-spacing: 8px;
+				padding: 120px 25px 80px;
 
-			color: var(--silver);
+				position: relative;
+			}
 
-			text-transform: uppercase;
+			.hero-content {
+				max-width: 1100px;
+			}
 
-			margin-bottom: 25px;
-		}
+			.eyebrow {
+				font-size: 11px;
+				letter-spacing: 7px;
+				text-transform: uppercase;
 
+				color: #aaa;
 
-		.hero h1 {
+				margin-bottom: 28px;
+			}
 
-			margin: 0;
+			h1 {
+				font-family: Cinzel, serif;
 
-			font-family: var(--serif);
+				font-size: clamp(42px, 8vw, 105px);
 
-			font-size:
-				clamp(
-					50px,
-					9vw,
-					125px
-				);
+				line-height: 0.98;
 
-			line-height: .88;
+				font-weight: 500;
 
-			font-weight: normal;
+				letter-spacing: 3px;
 
-			letter-spacing: -5px;
+				margin: 0;
 
-			text-transform: uppercase;
+				color: #fff;
 
-			color: white;
+				text-shadow:
+					0 0 15px rgba(255,255,255,0.08),
+					0 0 60px rgba(130,0,0,0.25);
+			}
 
-			text-shadow:
-				0 0 20px
-				rgba(255,255,255,.08),
+			.hero-title-line {
+				display: block;
+			}
 
-				0 0 80px
-				rgba(130,0,0,.35);
-		}
+			.hero-title-line:last-child {
+				color: #ddd;
+			}
 
+			.divider {
+				width: 120px;
+				height: 1px;
 
-		.hero h1 .divine {
-
-			display: block;
-		}
-
-
-		.hero h1 .kingdom {
-
-			display: block;
-
-			color: var(--blood-hot);
-
-			font-size: .52em;
-
-			letter-spacing: 9px;
-
-			margin-top: 25px;
-
-			text-shadow:
-				0 0 30px
-				rgba(220,0,0,.45);
-		}
-
-
-		.hero h1 .of {
-
-			display: block;
-
-			font-size: .24em;
-
-			letter-spacing: 8px;
-
-			color: var(--silver);
-
-			margin-top: 20px;
-
-			font-family: var(--sans);
-		}
-
-
-		.hero-line {
-
-			width: 220px;
-
-			height: 1px;
-
-			margin:
-				45px
-				auto
-				35px;
-
-			background:
-				linear-gradient(
+				background: linear-gradient(
 					90deg,
 					transparent,
-					white,
-					var(--blood-hot),
-					white,
-					transparent
-				);
-		}
-
-
-		.hero-subtitle {
-
-			font-family: var(--sans);
-
-			font-size: 11px;
-
-			letter-spacing: 5px;
-
-			color: #999;
-
-			text-transform: uppercase;
-		}
-
-
-		/* =========================================================
-		   BUTTONS
-		   ========================================================= */
-
-		.buttons {
-
-			display: flex;
-
-			justify-content: center;
-
-			flex-wrap: wrap;
-
-			gap: 12px;
-
-			margin-top: 40px;
-		}
-
-
-		.button {
-
-			display: inline-block;
-
-			padding:
-				13px
-				23px;
-
-			border:
-				1px solid
-				rgba(255,255,255,.25);
-
-			border-radius: 999px;
-
-			font-family: var(--sans);
-
-			font-size: 10px;
-
-			letter-spacing: 2px;
-
-			text-transform: uppercase;
-
-			transition: .35s;
-		}
-
-
-		.button:hover {
-
-			background:
-				var(--blood);
-
-			border-color:
-				var(--blood-hot);
-
-			box-shadow:
-				0 0 30px
-				rgba(190,0,0,.3);
-
-			transform:
-				translateY(-2px);
-		}
-
-
-		.button.blood {
-
-			border-color:
-				var(--blood-light);
-
-			background:
-				rgba(90,0,0,.2);
-		}
-
-
-		/* =========================================================
-		   INTRO
-		   ========================================================= */
-
-		.introduction {
-
-			max-width: 1050px;
-
-			margin: auto;
-
-			padding:
-				130px 25px;
-		}
-
-
-		.section-label {
-
-			font-family: var(--sans);
-
-			font-size: 9px;
-
-			letter-spacing: 6px;
-
-			text-transform: uppercase;
-
-			color: var(--blood-hot);
-
-			text-align: center;
-
-			margin-bottom: 20px;
-		}
-
-
-		.section-title {
-
-			text-align: center;
-
-			font-size:
-				clamp(
-					35px,
-					5vw,
-					60px
-				);
-
-			font-weight: normal;
-
-			letter-spacing: 3px;
-
-			text-transform: uppercase;
-
-			margin: 0;
-		}
-
-
-		.section-description {
-
-			max-width: 700px;
-
-			margin:
-				30px
-				auto;
-
-			text-align: center;
-
-			color: #aaa;
-
-			line-height: 1.9;
-
-			font-size: 17px;
-		}
-
-
-		/* =========================================================
-		   DIO RE AL QUOTE
-		   ========================================================= */
-
-		.quote {
-
-			position: relative;
-
-			margin:
-				70px
-				auto;
-
-			max-width: 900px;
-
-			padding:
-				55px
-				50px;
-
-			text-align: center;
-
-			background:
-				linear-gradient(
-					135deg,
-					rgba(90,0,0,.13),
-					rgba(0,0,0,.35)
-				);
-
-			border:
-				1px solid
-				rgba(255,255,255,.1);
-
-			border-radius: 28px;
-
-			box-shadow:
-				0 30px 100px
-				rgba(0,0,0,.4);
-		}
-
-
-		.quote::before {
-
-			content: "“";
-
-			position: absolute;
-
-			left: 25px;
-			top: -15px;
-
-			font-size: 100px;
-
-			color: var(--blood);
-
-			opacity: .65;
-		}
-
-
-		.quote p {
-
-			margin: 0;
-
-			font-size:
-				clamp(
-					20px,
-					3vw,
-					31px
-				);
-
-			font-style: italic;
-
-			line-height: 1.55;
-		}
-
-
-		.quote-author {
-
-			display: block;
-
-			margin-top: 25px;
-
-			font-family: var(--sans);
-
-			font-size: 10px;
-
-			letter-spacing: 4px;
-
-			color: var(--silver);
-
-			text-transform: uppercase;
-		}
-
-
-		/* =========================================================
-		   CARDS
-		   ========================================================= */
-
-		.section {
-
-			max-width: 1200px;
-
-			margin: auto;
-
-			padding:
-				110px 25px;
-		}
-
-
-		.cards {
-
-			display: grid;
-
-			grid-template-columns:
-				repeat(3, 1fr);
-
-			gap: 18px;
-
-			margin-top: 55px;
-		}
-
-
-		.card {
-
-			position: relative;
-
-			padding:
-				40px 32px;
-
-			min-height: 220px;
-
-			background:
-				linear-gradient(
-					145deg,
-					rgba(40,0,0,.42),
-					rgba(5,5,5,.75)
-				);
-
-			border:
-				1px solid
-				rgba(255,255,255,.11);
-
-			border-radius: 25px;
-
-			overflow: hidden;
-
-			transition:
-				.45s;
-		}
-
-
-		.card::before {
-
-			content: "";
-
-			position: absolute;
-
-			top: 0;
-			left: 25px;
-			right: 25px;
-
-			height: 1px;
-
-			background:
-				linear-gradient(
-					90deg,
-					transparent,
-					var(--blood),
+					#b00000,
 					transparent
 				);
 
-			opacity: .7;
-		}
+				margin: 38px auto;
+			}
 
+			.introduction {
+				max-width: 780px;
+				margin: auto;
 
-		.card:hover {
+				font-family: Cinzel, serif;
 
-			transform:
-				translateY(-7px);
+				font-size: clamp(18px, 2vw, 25px);
+				line-height: 1.7;
 
-			border-color:
-				rgba(190,0,0,.55);
+				color: #eee;
+			}
 
-			box-shadow:
-				0 25px 70px
-				rgba(100,0,0,.22);
-		}
+			.introduction strong {
+				color: white;
+				font-weight: 600;
+			}
 
+			/* =========================================================
+			   CONTENT
+			   ========================================================= */
 
-		.card-number {
+			.content {
+				width: min(1100px, calc(100% - 40px));
+				margin: auto;
+				padding-bottom: 120px;
+			}
 
-			font-family: var(--sans);
+			.section {
+				margin: 100px 0;
+				padding: 55px;
 
-			font-size: 10px;
+				background: rgba(0,0,0,0.68);
 
-			color: var(--blood-hot);
+				border: 1px solid rgba(255,255,255,0.09);
+				border-radius: 24px;
 
-			letter-spacing: 3px;
-		}
+				backdrop-filter: blur(10px);
 
+				box-shadow:
+					0 30px 100px rgba(0,0,0,0.6),
+					inset 0 0 80px rgba(80,0,0,0.03);
+			}
 
-		.card h3 {
+			.section h2 {
+				font-family: Cinzel, serif;
 
-			margin:
-				20px 0;
+				font-size: clamp(25px, 4vw, 40px);
 
-			font-size: 23px;
+				font-weight: 500;
 
-			font-weight: normal;
+				margin-top: 0;
 
-			letter-spacing: 2px;
+				color: #fff;
 
-			text-transform: uppercase;
-		}
+				letter-spacing: 2px;
+			}
 
+			.section h2::after {
+				content: "";
 
-		.card p {
+				display: block;
 
-			color: #999;
+				width: 70px;
+				height: 1px;
 
-			line-height: 1.8;
+				background: #900000;
 
-			font-size: 15px;
-		}
+				margin-top: 18px;
+			}
 
+			.section p {
+				color: #c6c6c6;
 
-		/* =========================================================
-		   COSMIC ARCHIVE
-		   ========================================================= */
+				font-size: 16px;
+				line-height: 1.9;
+			}
 
-		.archive {
+			/* =========================================================
+			   QUOTE
+			   ========================================================= */
 
-			max-width: 950px;
+			.quote {
+				text-align: center;
+				padding: 80px 30px;
 
-			margin: auto;
+				border-top: 1px solid rgba(150,0,0,0.3);
+				border-bottom: 1px solid rgba(150,0,0,0.3);
+			}
 
-			padding:
-				120px 25px;
-		}
+			.quote-text {
+				font-family: Cinzel, serif;
 
+				font-size: clamp(22px, 4vw, 42px);
 
-		.archive-list {
+				line-height: 1.5;
 
-			margin-top: 50px;
+				color: #fff;
+			}
 
-			border-top:
-				1px solid
-				var(--line);
-		}
+			.quote-author {
+				margin-top: 30px;
 
+				font-size: 12px;
+				letter-spacing: 3px;
 
-		.archive-item {
+				color: #888;
 
-			display: flex;
+				text-transform: uppercase;
+			}
 
-			align-items: center;
+			/* =========================================================
+			   LINKS
+			   ========================================================= */
 
-			justify-content: space-between;
+			.links {
+				display: grid;
 
-			gap: 30px;
+				grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
 
-			padding:
-				24px 5px;
+				gap: 14px;
 
-			border-bottom:
-				1px solid
-				var(--line);
+				margin-top: 35px;
+			}
 
-			transition: .3s;
-		}
+			.link-card {
+				display: block;
 
+				padding: 20px;
 
-		.archive-item:hover {
+				border: 1px solid rgba(255,255,255,0.1);
+				border-radius: 18px;
 
-			padding-left: 15px;
+				color: #ddd;
 
-			background:
-				linear-gradient(
-					90deg,
-					rgba(100,0,0,.12),
-					transparent
-				);
-		}
+				text-decoration: none;
 
+				background: rgba(10,10,10,0.65);
 
-		.archive-item span:first-child {
+				transition: all 0.3s ease;
+			}
 
-			font-size: 18px;
+			.link-card:hover {
+				transform: translateY(-3px);
 
-			color: var(--white);
-		}
+				border-color: rgba(160,0,0,0.7);
 
+				background: rgba(80,0,0,0.18);
 
-		.archive-item span:last-child {
+				color: white;
 
-			font-family: var(--sans);
+				box-shadow: 0 15px 45px rgba(100,0,0,0.12);
+			}
 
-			font-size: 9px;
+			.link-card strong {
+				display: block;
 
-			letter-spacing: 3px;
+				font-family: Cinzel, serif;
 
-			color: var(--blood-hot);
+				margin-bottom: 7px;
+			}
 
-			text-transform: uppercase;
-		}
+			.link-card span {
+				font-size: 12px;
+				color: #777;
+			}
 
+			/* =========================================================
+			   FOOTER
+			   ========================================================= */
 
-		/* =========================================================
-		   OFFICIAL LINKS
-		   ========================================================= */
+			footer {
+				text-align: center;
 
-		.links-section {
+				padding: 70px 20px 45px;
 
-			text-align: center;
+				border-top: 1px solid rgba(255,255,255,0.08);
 
-			padding:
-				120px 25px;
-		}
+				background: rgba(0,0,0,0.9);
+			}
 
+			.footer-title {
+				font-family: Cinzel, serif;
 
-		.links-grid {
+				font-size: 25px;
 
-			max-width: 900px;
+				letter-spacing: 2px;
 
-			margin:
-				50px
-				auto
-				0;
+				margin-bottom: 15px;
+			}
 
-			display: flex;
-
-			justify-content: center;
-
-			flex-wrap: wrap;
-
-			gap: 12px;
-		}
-
-
-		/* =========================================================
-		   CONTACT
-		   ========================================================= */
-
-		.contact {
-
-			max-width: 700px;
-
-			margin: auto;
-
-			text-align: center;
-
-			padding:
-				110px 25px
-				140px;
-		}
-
-
-		.email {
-
-			display: inline-block;
-
-			margin-top: 30px;
-
-			font-family: var(--sans);
-
-			font-size: 14px;
-
-			letter-spacing: 2px;
-
-			color: var(--white);
-
-			padding:
-				15px 25px;
-
-			border:
-				1px solid
-				rgba(255,255,255,.2);
-
-			border-radius: 999px;
-
-			transition: .3s;
-		}
-
-
-		.email:hover {
-
-			border-color:
-				var(--blood-hot);
-
-			background:
-				rgba(100,0,0,.25);
-		}
-
-
-		/* =========================================================
-		   FOOTER
-		   ========================================================= */
-
-		footer {
-
-			padding:
-				80px 25px;
-
-			text-align: center;
-
-			border-top:
-				1px solid
-				var(--line);
-
-			background:
-				rgba(0,0,0,.5);
-		}
-
-
-		.footer-symbol {
-
-			width: 60px;
-			height: 60px;
-
-			object-fit: contain;
-
-			margin-bottom: 25px;
-
-			opacity: .85;
-		}
-
-
-		footer h3 {
-
-			font-weight: normal;
-
-			font-size: 20px;
-
-			letter-spacing: 4px;
-
-			text-transform: uppercase;
-		}
-
-
-		.footer-subtitle {
-
-			font-family: var(--sans);
-
-			font-size: 9px;
-
-			letter-spacing: 4px;
-
-			color: #777;
-
-			text-transform: uppercase;
-		}
-
-
-		.copyright {
-
-			margin-top: 35px;
-
-			font-family: var(--sans);
-
-			font-size: 10px;
-
-			letter-spacing: 1px;
-
-			color: #555;
-		}
-
-
-		/* =========================================================
-		   MOBILE
-		   ========================================================= */
-
-		@media (max-width: 800px) {
-
-			.navigation {
-
-				gap: 3px;
-
-				padding:
-					10px 8px;
-
+			.footer-links {
+				display: flex;
 				flex-wrap: wrap;
+				justify-content: center;
+				gap: 10px;
+
+				margin: 30px auto;
 			}
 
+			.footer-links a {
+				color: #999;
+				text-decoration: none;
 
-			.navigation a {
+				font-size: 12px;
 
-				font-size: 8px;
+				padding: 9px 14px;
+
+				border-radius: 999px;
+
+				border: 1px solid rgba(255,255,255,0.08);
+
+				transition: 0.3s;
+			}
+
+			.footer-links a:hover {
+				color: white;
+				border-color: #700000;
+			}
+
+			.copyright {
+				color: #555;
+
+				font-size: 11px;
 
 				letter-spacing: 1px;
 
-				padding:
-					7px 9px;
+				margin-top: 35px;
 			}
 
+			/* =========================================================
+			   MOBILE
+			   ========================================================= */
 
-			.hero {
+			@media (max-width: 700px) {
 
-				padding:
-					140px 20px
-					90px;
+				nav {
+					height: auto;
+					min-height: 62px;
+
+					padding: 8px;
+
+					overflow-x: auto;
+					justify-content: flex-start;
+				}
+
+				nav a {
+					font-size: 9px;
+					padding: 9px 11px;
+					white-space: nowrap;
+				}
+
+				.hero {
+					padding-top: 120px;
+				}
+
+				.section {
+					padding: 30px 23px;
+					margin: 60px 0;
+				}
+
+				.sun {
+					width: 120vw;
+					height: 120vw;
+					opacity: 0.12;
+				}
+
+				.introduction {
+					font-size: 17px;
+				}
 			}
 
+			/* accessibility */
+			@media (prefers-reduced-motion: reduce) {
+				.sun {
+					animation: none;
+				}
 
-			.hero h1 {
-
-				letter-spacing: -2px;
+				html {
+					scroll-behavior: auto;
+				}
 			}
+		</style>
+	</head>
 
+	<body>
 
-			.hero h1 .kingdom {
+		<!-- =========================================================
+		     BACKGROUND
+		     ========================================================= -->
 
-				letter-spacing: 4px;
-			}
-
-
-			.hero h1 .of {
-
-				letter-spacing: 4px;
-			}
-
-
-			.sun {
-
-				width: 125vw;
-				height: 125vw;
-
-				opacity: .055;
-			}
-
-
-			.cards {
-
-				grid-template-columns:
-					1fr;
-			}
-
-
-			.quote {
-
-				padding:
-					45px 25px;
-			}
-
-
-			.archive-item {
-
-				align-items: flex-start;
-
-				flex-direction: column;
-
-				gap: 8px;
-			}
-
-
-			.links-grid {
-
-				gap: 9px;
-			}
-		}
-
-
-		/* =========================================================
-		   ACCESSIBILITY
-		   ========================================================= */
-
-		@media (prefers-reduced-motion: reduce) {
-
-			.sun,
-			.sun img,
-			.aura,
-			.hero-symbol {
-
-				animation: none;
-			}
-		}
-
-	</style>
-
-</head>
-
-
-<body>
-
-
-	<!-- =========================================================
-	     BACKGROUND
-	     ========================================================= -->
-
-	<div class="void" aria-hidden="true">
-
-		<div class="stars"></div>
-
-		<div class="aura"></div>
-
-		<div class="sun">
-
-			<img
-				src="/dio-re-al-sun-transparent.png"
-				alt=""
-			/>
-
+		<div class="cosmic-background">
+			<div class="sun"></div>
 		</div>
 
-	</div>
+		<div class="blood-glow"></div>
 
-
-	<div class="site">
-
-
-		<!-- =====================================================
+		<!-- =========================================================
 		     NAVIGATION
-		     ===================================================== -->
+		     ========================================================= -->
 
-		<nav class="navigation">
-
+		<nav>
 			<a href="/">Home</a>
-
-			<a href="#dio-re-al">
-				Dio Re Al
-			</a>
-
-			<a href="#alipseism">
-				Alipseism
-			</a>
-
-			<a href="#kingdom">
-				Kingdom
-			</a>
-
-			<a href="#archive">
-				Archive
-			</a>
-
-			<a href="#contact">
-				Contact
-			</a>
-
+			<a href="#about">About</a>
+			<a href="#lore">Lore</a>
+			<a href="#links">Links</a>
+			<a href="#contact">Contact</a>
 		</nav>
 
-
-		<!-- =====================================================
+		<!-- =========================================================
 		     HERO
-		     ===================================================== -->
+		     ========================================================= -->
 
 		<header class="hero">
 
-			<div class="hero-inner">
-
-
-				<img
-					class="hero-symbol"
-					src="/dio-re-al-sun-transparent.png"
-					alt="Sun of Dio Re Al"
-				/>
-
+			<div class="hero-content">
 
 				<div class="eyebrow">
-
 					The Official Domain
-
 				</div>
-
 
 				<h1>
-
-					<span class="divine">
-						Divine
+					<span class="hero-title-line">
+						The Divine Kingdom
 					</span>
 
-					<span class="divine">
-						Kingdom
+					<span class="hero-title-line">
+						of Dio Re Al
 					</span>
-
-					<span class="of">
-						OF
-					</span>
-
-					<span class="kingdom">
-						DIO RE AL
-					</span>
-
 				</h1>
 
+				<div class="divider"></div>
 
-				<div class="hero-line"></div>
-
-
-				<div class="hero-subtitle">
-
-					ETERNAL · INVICTUS · IMMORTAL
-
-				</div>
-
-
-				<div class="buttons">
-
-					<a
-						class="button blood"
-						href="#dio-re-al"
-					>
-						Enter the Kingdom
-					</a>
-
-
-					<a
-						class="button"
-						href="https://allmylinks.com/divinoreinodedioreal"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						All My Links
-					</a>
-
-				</div>
-
+				<p class="introduction">
+					<strong>I am Lord Al, Dio Re Al...</strong><br />
+					The Only Real Eternal Invictus Immortal God King of All.
+				</p>
 
 			</div>
 
 		</header>
 
+		<!-- =========================================================
+		     MAIN
+		     ========================================================= -->
 
-		<!-- =====================================================
-		     DIO RE AL
-		     ===================================================== -->
+		<main class="content">
 
-		<section
-			class="introduction"
-			id="dio-re-al"
-		>
+			<section class="section" id="about">
 
-			<div class="section-label">
-				The Sovereign
-			</div>
-
-
-			<h2 class="section-title">
-				Dio Re Al
-			</h2>
-
-
-			<p class="section-description">
-
-				I am Lord Al, Dio Re Al...
-				The Only Real Eternal Invictus Immortal God King of All.
-
-			</p>
-
-
-			<div class="quote">
+				<h2>The Divine Kingdom</h2>
 
 				<p>
-
-					“Selflessness does not exist.
-					You can't be selfless without a self
-					in the first place.”
-
+					The Divine Kingdom of Dio Re Al is the official domain
+					of Dio Re Al and the home of Alipseism, also known as
+					Diorealism.
 				</p>
 
+				<p>
+					Alipseism or Diorealism is my religion, philosophy and
+					lifestyle. I am its Leader, Creator, King, God, Founder
+					and Owner.
+				</p>
 
-				<span class="quote-author">
+			</section>
 
+			<section class="quote">
+
+				<div class="quote-text">
+					“Selflessness does not exist. You can't be selfless
+					without a self in the first place.”
+				</div>
+
+				<div class="quote-author">
 					— Dio Re Al
-
-				</span>
-
-			</div>
-
-
-		</section>
-
-
-		<!-- =====================================================
-		     ALIPSEISM
-		     ===================================================== -->
-
-		<section
-			class="section"
-			id="alipseism"
-		>
-
-			<div class="section-label">
-				Doctrine
-			</div>
-
-
-			<h2 class="section-title">
-				Alipseism
-			</h2>
-
-
-			<p class="section-description">
-
-				Alipseism, or Diorealism, is a religion,
-				philosophy, and lifestyle created and led
-				by Dio Re Al.
-
-			</p>
-
-
-			<div class="cards">
-
-
-				<article class="card">
-
-					<div class="card-number">
-						I
-					</div>
-
-					<h3>
-						The Self
-					</h3>
-
-					<p>
-
-						The self is the fundamental point
-						from which consciousness, existence,
-						creation, identity, and experience
-						are understood.
-
-					</p>
-
-				</article>
-
-
-				<article class="card">
-
-					<div class="card-number">
-						II
-					</div>
-
-					<h3>
-						The Eternal
-					</h3>
-
-					<p>
-
-						Immortality, transcendence,
-						permanence, creation, and the
-						overcoming of limitation form
-						central themes.
-
-					</p>
-
-				</article>
-
-
-				<article class="card">
-
-					<div class="card-number">
-						III
-					</div>
-
-					<h3>
-						The Kingdom
-					</h3>
-
-					<p>
-
-						The Divine Kingdom encompasses
-						the writings, symbols, works,
-						lore, art, philosophy, and creations
-						of Dio Re Al.
-
-					</p>
-
-				</article>
-
-
-			</div>
-
-		</section>
-
-
-		<!-- =====================================================
-		     KINGDOM
-		     ===================================================== -->
-
-		<section
-			class="section"
-			id="kingdom"
-		>
-
-			<div class="section-label">
-				The Realms
-			</div>
-
-
-			<h2 class="section-title">
-				The Divine Kingdom
-			</h2>
-
-
-			<div class="cards">
-
-
-				<article class="card">
-
-					<div class="card-number">
-						01
-					</div>
-
-					<h3>
-						Doctrine
-					</h3>
-
-					<p>
-
-						Foundations, principles,
-						writings, philosophy,
-						and teachings.
-
-					</p>
-
-				</article>
-
-
-				<article class="card">
-
-					<div class="card-number">
-						02
-					</div>
-
-					<h3>
-						Lore
-					</h3>
-
-					<p>
-
-						The continuing lore,
-						symbolism, cosmology,
-						figures, realms, and
-						creative universe.
-
-					</p>
-
-				</article>
-
-
-				<article class="card">
-
-					<div class="card-number">
-						03
-					</div>
-
-					<h3>
-						Creation
-					</h3>
-
-					<p>
-
-						Art, poetry, music,
-						writing, digital works,
-						and creative expression.
-
-					</p>
-
-				</article>
-
-
-			</div>
-
-		</section>
-
-
-		<!-- =====================================================
-		     COSMIC ARCHIVE
-		     ===================================================== -->
-
-		<section
-			class="archive"
-			id="archive"
-		>
-
-			<div class="section-label">
-				Archive
-			</div>
-
-
-			<h2 class="section-title">
-				Influences & Realms
-			</h2>
-
-
-			<p class="section-description">
-
-				A private constellation of artistic,
-				literary, philosophical, supernatural,
-				cosmic, and cultural inspirations.
-
-			</p>
-
-
-			<div class="archive-list">
-
-
-				<div class="archive-item">
-
-					<span>
-						Vampirism
-					</span>
-
-					<span>
-						Eternal Night
-					</span>
+				</div>
+
+			</section>
+
+			<section class="section" id="lore">
+
+				<h2>The Lore of Dio Re Al</h2>
+
+				<p>
+					The Kingdom contains its own lore, symbols, principles,
+					ideas, writings, creations and works surrounding the
+					Divine Kingdom of Dio Re Al.
+				</p>
+
+				<p>
+					This domain serves as the central point from which the
+					Kingdom, its writings, artistic works and other creations
+					can be explored.
+				</p>
+
+			</section>
+
+			<section class="section" id="links">
+
+				<h2>The Kingdom's Domains</h2>
+
+				<div class="links">
+
+					<a
+						class="link-card"
+						href="https://allmylinks.com/divinoreinodedioreal"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<strong>AllMyLinks</strong>
+						<span>Central collection of links</span>
+					</a>
+
+					<a
+						class="link-card"
+						href="https://www.poeticous.com/alczolivier"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<strong>Poeticous</strong>
+						<span>Poetry and writings</span>
+					</a>
+
+					<a
+						class="link-card"
+						href="https://www.artstation.com/diosreyal"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<strong>ArtStation</strong>
+						<span>Visual works and art</span>
+					</a>
+
+					<a
+						class="link-card"
+						href="https://www.twitch.tv/diosreyal"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<strong>Twitch</strong>
+						<span>Live broadcasts</span>
+					</a>
+
+					<a
+						class="link-card"
+						href="https://www.paypal.com/donate/?cmd=_donations&source=url&business=kingdom_of_al@outlook.es"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<strong>Support the Kingdom</strong>
+						<span>Support through PayPal</span>
+					</a>
+
+					<a
+						class="link-card"
+						href="mailto:divinekingdomofal@proton.me"
+					>
+						<strong>Contact</strong>
+						<span>divinekingdomofal@proton.me</span>
+					</a>
 
 				</div>
 
+			</section>
 
-				<div class="archive-item">
+			<section class="section" id="contact">
 
-					<span>
-						Cosmicism
-					</span>
+				<h2>Contact the Kingdom</h2>
 
-					<span>
-						The Infinite
-					</span>
+				<p>
+					For official correspondence:
+				</p>
 
-				</div>
+				<p>
+					<a
+						href="mailto:divinekingdomofal@proton.me"
+						style="color:#fff;"
+					>
+						divinekingdomofal@proton.me
+					</a>
+				</p>
 
+			</section>
 
-				<div class="archive-item">
+		</main>
 
-					<span>
-						Lovecraftian Horror
-					</span>
-
-					<span>
-						Unknown Cosmos
-					</span>
-
-				</div>
-
-
-				<div class="archive-item">
-
-					<span>
-						Edgar Allan Poe
-					</span>
-
-					<span>
-						Dark Romanticism
-					</span>
-
-				</div>
-
-
-				<div class="archive-item">
-
-					<span>
-						Greco-Roman Hellenism
-					</span>
-
-					<span>
-						Ancient Gods
-					</span>
-
-				</div>
-
-
-				<div class="archive-item">
-
-					<span>
-						Norse & Celtic Traditions
-					</span>
-
-					<span>
-						Ancient Europe
-					</span>
-
-				</div>
-
-
-				<div class="archive-item">
-
-					<span>
-						Surrealism
-					</span>
-
-					<span>
-						Dream States
-					</span>
-
-				</div>
-
-
-				<div class="archive-item">
-
-					<span>
-						Dark Fantasy
-					</span>
-
-					<span>
-						The Unfathomable
-					</span>
-
-				</div>
-
-
-			</div>
-
-		</section>
-
-
-		<!-- =====================================================
-		     OFFICIAL PRESENCE
-		     ===================================================== -->
-
-		<section class="links-section">
-
-			<div class="section-label">
-				Outside the Domain
-			</div>
-
-
-			<h2 class="section-title">
-				Official Presence
-			</h2>
-
-
-			<div class="links-grid">
-
-
-				<a
-					class="button"
-					href="https://allmylinks.com/divinoreinodedioreal"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					All My Links
-				</a>
-
-
-				<a
-					class="button"
-					href="https://www.poeticous.com/alczolivier"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Poetry
-				</a>
-
-
-				<a
-					class="button"
-					href="https://www.artstation.com/diosreyal"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					ArtStation
-				</a>
-
-
-				<a
-					class="button"
-					href="https://www.twitch.tv/diosreyal"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Twitch
-				</a>
-
-
-				<a
-					class="button blood"
-					href="https://www.paypal.com/donate/?cmd=_donations&source=url&business=kingdom_of_al@outlook.es"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Support the Cause
-				</a>
-
-
-			</div>
-
-		</section>
-
-
-		<!-- =====================================================
-		     CONTACT
-		     ===================================================== -->
-
-		<section
-			class="contact"
-			id="contact"
-		>
-
-			<div class="section-label">
-				Correspondence
-			</div>
-
-
-			<h2 class="section-title">
-				Contact
-			</h2>
-
-
-			<p class="section-description">
-
-				For official correspondence
-				with the Divine Kingdom of Dio Re Al.
-
-			</p>
-
-
-			<a
-				class="email"
-				href="mailto:divinekingdomofal@proton.me"
-			>
-				divinekingdomofal@proton.me
-			</a>
-
-		</section>
-
-
-		<!-- =====================================================
+		<!-- =========================================================
 		     FOOTER
-		     ===================================================== -->
+		     ========================================================= -->
 
 		<footer>
 
-
-			<img
-				class="footer-symbol"
-				src="/dio-re-al-sun-transparent.png"
-				alt="Sun of Dio Re Al"
-			/>
-
-
-			<h3>
-				Divine Kingdom of Dio Re Al
-			</h3>
-
-
-			<div class="footer-subtitle">
-
-				Eternal · Invictus · Immortal
-
+			<div class="footer-title">
+				The Divine Kingdom of Dio Re Al
 			</div>
 
+			<div class="footer-links">
 
-			<div class="buttons">
+				<a href="/">Home</a>
 
-				<a
-					class="button"
-					href="/"
-				>
-					Home
+				<a href="#about">About</a>
+
+				<a href="#lore">Lore</a>
+
+				<a href="#links">Links</a>
+
+				<a href="https://www.twitch.tv/diosreyal"
+				   target="_blank"
+				   rel="noopener noreferrer">
+					Twitch
 				</a>
 
+				<a href="https://www.artstation.com/diosreyal"
+				   target="_blank"
+				   rel="noopener noreferrer">
+					ArtStation
+				</a>
 
-				<a
-					class="button"
-					href="mailto:divinekingdomofal@proton.me"
-				>
+				<a href="mailto:divinekingdomofal@proton.me">
 					Email
 				</a>
 
-
-				<a
-					class="button"
-					href="https://allmylinks.com/divinoreinodedioreal"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					All My Links
-				</a>
-
 			</div>
-
 
 			<div class="copyright">
-
 				© The Divine Kingdom of Dio Re Al • All Rights Reserved.
-
 			</div>
-
 
 		</footer>
 
-
-	</div>
-
-
-</body>
+	</body>
 </html>
