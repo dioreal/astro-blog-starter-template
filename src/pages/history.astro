@@ -1,0 +1,550 @@
+```astro
+---
+const title = "History | The Divine Kingdom of Dio Re Al";
+const description =
+	"History of The Divine Kingdom of Dio Re Al / Æλ and Alipseism / Diorealism.";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+
+		<link
+			rel="icon"
+			type="image/webp"
+			href="/dio-re-al-white-sun-of-dio-re-al-x-design.webp"
+		/>
+
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+			:root {
+				--black: #000000;
+				--blood: #8b0000;
+				--white: #f5f5f5;
+				--grey: #a7a7a7;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				margin: 0;
+				background: #000;
+				color: var(--white);
+				font-family: Inter, sans-serif;
+				overflow-x: hidden;
+			}
+
+			/* BACKGROUND */
+
+			.cosmic-background {
+				position: fixed;
+				inset: 0;
+				z-index: -10;
+				overflow: hidden;
+				background: #000;
+			}
+
+			.sun {
+				position: absolute;
+
+				width: min(72vw, 900px);
+				height: min(72vw, 900px);
+
+				left: 50%;
+				top: 50%;
+
+				transform: translate(-50%, -50%);
+
+				background-image: url('/dio-re-al-white-sun-of-dio-re-al-x-design.webp');
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;
+
+				filter:
+					brightness(1.1)
+					contrast(1.05)
+					drop-shadow(0 0 25px rgba(255,255,255,0.18))
+					drop-shadow(0 0 90px rgba(255,255,255,0.08));
+
+				opacity: 0.18;
+
+				animation:
+					sunDrift 28s ease-in-out infinite alternate,
+					sunRotate 100s linear infinite;
+
+				pointer-events: none;
+			}
+
+			@keyframes sunDrift {
+				0% {
+					transform: translate(-57%, -48%) scale(0.92);
+				}
+
+				50% {
+					transform: translate(-43%, -53%) scale(1.05);
+				}
+
+				100% {
+					transform: translate(-52%, -44%) scale(0.96);
+				}
+			}
+
+			@keyframes sunRotate {
+				from {
+					filter:
+						brightness(1.1)
+						contrast(1.05)
+						drop-shadow(0 0 25px rgba(255,255,255,0.18));
+				}
+
+				to {
+					filter:
+						brightness(1.15)
+						contrast(1.05)
+						drop-shadow(0 0 55px rgba(255,255,255,0.12));
+				}
+			}
+
+			.cosmic-background::after {
+				content: "";
+				position: absolute;
+				inset: 0;
+
+				background:
+					radial-gradient(
+						circle at center,
+						transparent 0%,
+						rgba(0,0,0,0.12) 35%,
+						rgba(0,0,0,0.75) 75%,
+						#000 100%
+					);
+
+				pointer-events: none;
+			}
+
+			.blood-glow {
+				position: fixed;
+
+				width: 45vw;
+				height: 45vw;
+
+				max-width: 650px;
+				max-height: 650px;
+
+				left: 50%;
+				top: 50%;
+
+				transform: translate(-50%, -50%);
+
+				background: radial-gradient(
+					circle,
+					rgba(130,0,0,0.12) 0%,
+					rgba(80,0,0,0.06) 35%,
+					transparent 70%
+				);
+
+				filter: blur(40px);
+
+				z-index: -9;
+
+				pointer-events: none;
+			}
+
+			/* NAVIGATION */
+
+			nav {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+
+				height: 74px;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
+
+				background: rgba(0,0,0,0.78);
+				backdrop-filter: blur(14px);
+
+				border-bottom: 1px solid rgba(255,255,255,0.08);
+
+				z-index: 100;
+			}
+
+			nav a {
+				color: #ddd;
+				text-decoration: none;
+
+				padding: 11px 17px;
+
+				border: 1px solid transparent;
+				border-radius: 999px;
+
+				font-size: 12px;
+				letter-spacing: 1.5px;
+				text-transform: uppercase;
+
+				transition: all 0.3s ease;
+			}
+
+			nav a:hover {
+				color: white;
+				border-color: rgba(180,0,0,0.7);
+				background: rgba(100,0,0,0.18);
+				box-shadow: 0 0 20px rgba(130,0,0,0.18);
+			}
+
+			/* PAGE */
+
+			.hero {
+				padding: 150px 25px 70px;
+				text-align: center;
+			}
+
+			.eyebrow {
+				font-size: 11px;
+				letter-spacing: 7px;
+				text-transform: uppercase;
+				color: #aaa;
+				margin-bottom: 28px;
+			}
+
+			h1 {
+				font-family: Cinzel, serif;
+				font-size: clamp(40px, 7vw, 80px);
+				line-height: 1.05;
+				font-weight: 500;
+				letter-spacing: 3px;
+				margin: 0;
+				color: #fff;
+
+				text-shadow:
+					0 0 15px rgba(255,255,255,0.08),
+					0 0 60px rgba(130,0,0,0.25);
+			}
+
+			.divider {
+				width: 120px;
+				height: 1px;
+
+				background: linear-gradient(
+					90deg,
+					transparent,
+					#b00000,
+					transparent
+				);
+
+				margin: 38px auto;
+			}
+
+			.content {
+				width: min(1100px, calc(100% - 40px));
+				margin: auto;
+				padding-bottom: 120px;
+			}
+
+			.section {
+				margin: 30px 0 100px;
+				padding: 55px;
+
+				background: rgba(0,0,0,0.68);
+
+				border: 1px solid rgba(255,255,255,0.09);
+				border-radius: 24px;
+
+				backdrop-filter: blur(10px);
+
+				box-shadow:
+					0 30px 100px rgba(0,0,0,0.6),
+					inset 0 0 80px rgba(80,0,0,0.03);
+			}
+
+			.section h2 {
+				font-family: Cinzel, serif;
+
+				font-size: clamp(25px, 4vw, 40px);
+
+				font-weight: 500;
+
+				margin-top: 0;
+				margin-bottom: 35px;
+
+				color: #fff;
+
+				letter-spacing: 2px;
+			}
+
+			.section h2::after {
+				content: "";
+
+				display: block;
+
+				width: 70px;
+				height: 1px;
+
+				background: #900000;
+
+				margin-top: 18px;
+			}
+
+			.section p {
+				color: #c6c6c6;
+
+				font-size: 16px;
+
+				line-height: 1.95;
+
+				margin: 0 0 28px;
+			}
+
+			.section a {
+				color: #fff;
+				text-decoration: underline;
+				text-decoration-color: #800000;
+				text-underline-offset: 4px;
+			}
+
+			.section a:hover {
+				color: #ddd;
+			}
+
+			footer {
+				text-align: center;
+
+				padding: 70px 20px 45px;
+
+				border-top: 1px solid rgba(255,255,255,0.08);
+
+				background: rgba(0,0,0,0.9);
+			}
+
+			.footer-title {
+				font-family: Cinzel, serif;
+
+				font-size: 25px;
+
+				letter-spacing: 2px;
+
+				margin-bottom: 15px;
+			}
+
+			.copyright {
+				color: #555;
+
+				font-size: 11px;
+
+				letter-spacing: 1px;
+
+				margin-top: 35px;
+			}
+
+			@media (max-width: 700px) {
+
+				nav {
+					height: auto;
+					min-height: 62px;
+
+					padding: 8px;
+
+					overflow-x: auto;
+
+					justify-content: flex-start;
+				}
+
+				nav a {
+					font-size: 9px;
+					padding: 9px 11px;
+					white-space: nowrap;
+				}
+
+				.hero {
+					padding-top: 120px;
+				}
+
+				.section {
+					padding: 30px 23px;
+					margin: 30px 0 60px;
+				}
+
+				.sun {
+					width: 120vw;
+					height: 120vw;
+					opacity: 0.12;
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				.sun {
+					animation: none;
+				}
+
+				html {
+					scroll-behavior: auto;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="cosmic-background">
+			<div class="sun"></div>
+		</div>
+
+		<div class="blood-glow"></div>
+
+		<nav>
+			<a href="/">Home</a>
+			<a href="/history">History</a>
+			<a href="/#about">About</a>
+			<a href="/#lore">Lore</a>
+			<a href="/#links">Links</a>
+			<a href="/#contact">Contact</a>
+		</nav>
+
+		<header class="hero">
+
+			<div class="eyebrow">
+				The Divine Kingdom of Dio Re Al / Æλ
+			</div>
+
+			<h1>
+				History
+			</h1>
+
+			<div class="divider"></div>
+
+		</header>
+
+		<main class="content">
+
+			<section class="section">
+
+				<h2>History of The Divine Kingdom of Dio Re Al / Æλ</h2>
+
+				<p>
+					The Divine Kingdom of Dio/God Re/King Al/Æλ is the only
+					authentic international organization in the world that
+					represents the true Alipsean/Æλipsean also known as
+					Diorealist/Diorealean (and you can also write it
+					Al-Ipsean/Æλ-Ipsean) or Alipseist/Æλipseist
+					(that you can also write it Al-Ipseist/Æλ-Ipseist)
+					religion/philosophy/method/lifestyle/etc... For all
+					Alinos/Æλinos and Alinas/Æλinas as we say in Spanish.
+				</p>
+
+				<p>
+					We have a worldwide/international membership and a
+					dedicated Order to help new members.
+				</p>
+
+				<p>
+					The Divine Kingdom of Lord Dio Re Al/Æλ has been in
+					continuous existence since its creation and/or better
+					to say since the first publication of The 12/XII
+					Fundaments of Alipseism/Al-Ipseism or
+					Æλipseism/Æλ-Ipseism in the website Poeticous the
+					12 of August of 2020 yet was created even before that
+					like in 2019/2018/2017 authored by Dios Rey Al/Æλ
+					(or God King Al/Æλ in English) who is the
+					founder/owner/king/God and creator of this
+					philosophy/religion/etc..
+				</p>
+
+				<p>
+					You can find the original publication here:
+					<a
+						href="https://www.poeticous.com/alczolivier/los-xii-fundamentos-del-alipsismo"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						The XII Fundaments of Alipseism
+					</a>
+				</p>
+
+				<p>
+					When we formed our organization in the United States,
+					Canada, Australia, Europe and Argentina, Uruguay and
+					Chile, we did this to allow our membership to benefit
+					from the legal protection of religion under the First
+					Amendment of the U.S. Constitution and under the legal
+					framework of the Republic of Chile for the protection
+					of religious freedom known as the Law on Freedom of
+					Worship and as well generally and internationally since
+					we know very well that laws on these matters are
+					different from one country to another yet most of them
+					allow freedom of religion in summary and in a nutshell.
+				</p>
+
+				<p>
+					Membership grew slowly but steadily for the first few
+					years and we started first with a Blogspot and a Tumblr
+					long ago, presence in Second Life with our own sim and
+					group and a Discord server at first but now with our own
+					former website, membership has made rapid growth over
+					the last years.
+				</p>
+
+				<p>
+					Most members have come to the Divine Kingdom of Dio Re
+					Al/Æλ, also known as the Infinite Castle of Dio Re
+					Al/Æλ and/or Dios Rey Al/Æλ's Order, through word of
+					mouth and invitations by other members.
+				</p>
+
+				<p>
+					Yet however it is increasingly happening that new
+					members find my Divine Kingdom of Dio Re Al/Æλ through
+					social networks or find it on the internet in general,
+					looking for a religion that truly represents them.
+					Certainly Alipseism or Diorealism is the key to unlock
+					the limitlessness of the incredible life you and I
+					deserve, or anyone deserves to be living.
+				</p>
+
+				<p>
+					We are unique/original and we do not recognize any
+					others who would make claims upon our heritage and
+					authority.
+				</p>
+
+				<p>
+					We continue to grow internationally, offering members
+					live support and training in the Infinite Castle of
+					Dio Re Al/Æλ, The Divine Kingdom of Dio Re Al/Æλ and
+					the Dios Rey Al/Æλ's Order.
+				</p>
+
+			</section>
+
+		</main>
+
+		<footer>
+
+			<div class="footer-title">
+				The Divine Kingdom of Dio Re Al
+			</div>
+
+			<div class="copyright">
+				© The Divine Kingdom of Dio Re Al • All Rights Reserved.
+			</div>
+
+		</footer>
+
+	</body>
+</html>
+```
